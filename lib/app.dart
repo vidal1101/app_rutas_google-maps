@@ -1,5 +1,5 @@
-import 'package:app_googlemaps_rutas/UI/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:app_googlemaps_rutas/UI/ui.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
       initialRoute:  'home',
       routes: {
         'home' :(context) => HomePage(), 
+        'splah' :(context) => LoadingPage(),
       },
     );
   }
