@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:app_googlemaps_rutas/blocs/blocs.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GpsAccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child:_EnabledGpsMessage(),
-                // _AccessButton()
+          child: BlocBuilder<GpsBloc, GpsState>(
+            builder: (context, state){
+              print(state);
+              return !state.isGpsenabled 
+              ? _EnabledGpsMessage()
+              : _AccessButton();
+          })
       ),
     );
   }

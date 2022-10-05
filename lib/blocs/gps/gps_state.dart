@@ -13,5 +13,11 @@ class GpsState extends Equatable {
   List<Object> get props => [
     isGpsenabled , isGpsPermissionGranted
   ];
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return '{ isGpsenabled: ${isGpsenabled}  ,  isGpsPermissionGranted: ${isGpsPermissionGranted} }';
+  }
 }
 
