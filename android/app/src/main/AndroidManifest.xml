@@ -1,5 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vidalsoftgooglemapslocation.app_googlemaps_rutas">
+
+    <!-- ubicacion mapas-->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- ubicacion mapas-->
+
    <application
         android:label="app_googlemaps_rutas"
         android:name="${applicationName}"
