@@ -6,10 +6,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner:  false,
-      initialRoute:  'gpsaccess',
+      initialRoute:  'loading',
       routes: {
         'gpsaccess'    :(context) => GpsAccessScreen(), 
-        'splah'   :(context) => LoadingPage(),
+        'loading'   :(context) => LoadingPage(),
       },
     );
   }

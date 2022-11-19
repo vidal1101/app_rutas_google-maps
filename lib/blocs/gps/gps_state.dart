@@ -5,6 +5,8 @@ class GpsState extends Equatable {
   final bool isGpsenabled;
   final bool isGpsPermissionGranted ;
 
+  bool get isAllPermission => isGpsenabled && isGpsPermissionGranted ;
+
   const GpsState(
     this.isGpsenabled,
     this.isGpsPermissionGranted

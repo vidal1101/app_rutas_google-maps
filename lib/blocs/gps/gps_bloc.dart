@@ -27,15 +27,22 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
   }
 
   Future _init()async{
-    //permission = await Geo locator.checkPermission();
-    final isenabledstatus = await  _checkgpsStatus();
-    //print('$isenabledstatus');
+
+    final gpsinitstate = await Future.wait([
+      _checkgpsStatus(),
+      _isPermissionGranted(),
+    ]);
 
     add(GpsPermissionEvent(
-      isGpsenabled: isenabledstatus,
-      isGpspermisionGranted: state.isGpsPermissionGranted
+      isGpsenabled: gpsinitstate[0],
+      isGpspermisionGranted: gpsinitstate[1],
     ));
 
+  }
+
+  Future<bool> _isPermissionGranted ()async {
+    final isgranted = await Permission.location.isGranted;
+    return isgranted;
   }
 
   Future _checkgpsStatus ()async {
