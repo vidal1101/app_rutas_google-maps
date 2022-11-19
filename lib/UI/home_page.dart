@@ -42,7 +42,10 @@ class _AccessButton extends StatelessWidget {
             'Solicitar acceso',
             style: TextStyle(color: Colors.white),
           ),
-          onPressed: () {
+          onPressed: () async{
+
+            final gpsbloc = BlocProvider.of<GpsBloc>(context);
+            gpsbloc.askGpsAccess();
 
           },
         )

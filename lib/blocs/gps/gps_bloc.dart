@@ -4,6 +4,7 @@ import 'package:app_googlemaps_rutas/blocs/blocs.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 part 'gps_event.dart';
 part 'gps_state.dart';
@@ -52,6 +53,32 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
     });
     //print(isenable);
     return isenablegeolocator;
+  }
+
+  Future askGpsAccess ()async {
+    final status = await  Permission.location.request();
+
+    switch (status){
+      
+      case PermissionStatus.granted:
+        // TODO: Handle this case.
+        add(GpsPermissionEvent(
+          isGpsenabled: state.isGpsenabled,
+          isGpspermisionGranted: true, 
+        ));
+        break;
+
+      case PermissionStatus.denied:
+      case PermissionStatus.restricted:
+      case PermissionStatus.limited:
+      case PermissionStatus.permanentlyDenied:
+        add(GpsPermissionEvent(
+          isGpsenabled: state.isGpsenabled,
+          isGpspermisionGranted: false, 
+        ));
+        openAppSettings();
+    }
+
   }
 
 
