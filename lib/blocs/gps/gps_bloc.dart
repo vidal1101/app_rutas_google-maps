@@ -37,4 +37,11 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
     //print(isenable);
     return isenablegeolocator;
   }
+
+
+  @override
+  Future<void> close() {
+    // TODO: implement close
+    return super.close();
+  }
 }
