@@ -12,15 +12,23 @@ class GoogleMapsPage extends StatefulWidget {
 
 class _GoogleMapsPageState extends State<GoogleMapsPage> {
 
+  late LocationBloc locationBloc;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    final locationBloc = BlocProvider.of<LocationBloc>(context);
+    locationBloc = BlocProvider.of<LocationBloc>(context);
     locationBloc.startFollwingUser();
 
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    locationBloc.stopFollowingUser();
+    super.dispose();
   }
 
   @override
