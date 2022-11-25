@@ -10,7 +10,7 @@ class LoadingPage extends StatelessWidget {
       body: BlocBuilder<GpsBloc, GpsState>(
         builder: (context, state) {
           return state.isAllPermission ?
-          Center() : GpsAccessScreen();
+          GoogleMapsPage() : GpsAccessScreen();
         },
       )
     );
